@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sett Alarm</title>
+</head>
+<body>
+    <h1>Sett en alarm for 10 minutter fra nå</h1>
+    <button onclick="setAlarm()">Sett Alarm</button>
+    <script>
+        function setAlarm() {
+            const now = new Date();
+            const future = new Date(now.getTime() + 10 * 60000); // Legger til 10 minutter
+            const hour = future.getHours();
+            const minute = future.getMinutes();
+
+            const intentUrl = `intent://#Intent;action=android.intent.action.SET_ALARM;S.android.intent.extra.alarm.MESSAGE=Ti minutters Alarm;S.android.intent.extra.alarm.HOUR=${hour};S.android.intent.extra.alarm.MINUTES=${minute};end`;
+            window.location.href = intentUrl;
+        }
+    </script>
+</body>
+</html>
